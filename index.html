@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Ishify</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- SIDEBAR -->
+
+  <aside class="sidebar">
+
+    <h1 class="logo">Ishify</h1>
+
+    <nav>
+
+      <ul>
+
+        <li class="active" id="homeBtn">
+          🏠 Home
+        </li>
+
+        <li id="searchBtn">
+          🔍 Search
+        </li>
+
+        <li id="recentBtn">
+          🕓 Recently Played
+        </li>
+
+        <li id="libraryBtn">
+          📚 Your Library
+        </li>
+
+        <li id="likedBtn">
+          ❤️ Liked Songs
+        </li>
+
+        <li id="artistBtn">
+          🎤 Artists
+        </li>
+
+        <li id="profileBtn">
+          👤 Profile
+        </li>
+
+      </ul>
+
+    </nav>
+
+
+
+    <!-- PLAYLISTS -->
+
+    <div class="playlist-section">
+
+      <h3>Your Playlists</h3>
+
+      <div class="playlist-card">
+        Chill Vibes
+      </div>
+
+      <div class="playlist-card">
+        Night Drive
+      </div>
+
+      <div class="playlist-card">
+        Romantic Mood
+      </div>
+
+    </div>
+
+  </aside>
+
+
+
+  <!-- MAIN -->
+
+  <main class="main-content">
+
+    <div class="topbar">
+
+
+
+  <!-- EMPTY LEFT -->
+
+  <div></div>
+
+
+
+  <!-- SEARCH -->
+
+  <div class="search-wrapper">
+
+    <input
+    type="text"
+    id="searchInput"
+    placeholder="Search any song or artist...">
+
+  </div>
+
+
+
+  <!-- RIGHT -->
+
+  <div class="topbar-right">
+
+    <img
+    id="profileTopbar"
+    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop">
+
+
+    <button id="themeToggle">
+      🌙
+    </button>
+
+  </div>
+
+</div>
+
+
+
+    <!-- HOME PAGE -->
+
+    <div id="homePage">
+
+      <h1 class="heading">
+        Discover Music 🎧
+      </h1>
+
+
+    <div class="hero-banner">
+
+        <div>
+
+            <h1>
+                Feel The Music 🎧
+            </h1>
+
+            <p>
+            Discover trending tracks,
+            premium playlists &
+            your daily vibe.
+            </p>
+
+            <button>
+                Explore Now
+            </button>
+
+        </div>
+
+    </div>
+      <!-- GENRES -->
+
+      <div class="genre-grid">
+
+        <div class="genre-card"
+        data-genre="pop">
+          Pop
+        </div>
+
+        <div class="genre-card"
+        data-genre="dance">
+          Dance
+        </div>
+
+        <div class="genre-card"
+        data-genre="lofi">
+          Lofi
+        </div>
+
+        <div class="genre-card"
+        data-genre="hiphop">
+          Hip Hop
+        </div>
+
+        <div class="genre-card"
+        data-genre="punjabi">
+          Punjabi
+        </div>
+
+        <div class="genre-card"
+        data-genre="romantic">
+          Romantic
+        </div>
+
+      </div>
+
+
+
+      <!-- SONGS -->
+
+      <section id="trendingSection">
+
+        <div class="section-title">
+
+        <h2>Trending Songs</h2>
+
+        </div>
+
+        <div class="song-grid"
+        id="songGrid">
+
+        </div>
+
+      </section>
+
+
+
+      <!-- PODCASTS -->
+
+      <section>
+
+        <div class="section-title">
+
+          <h2>Popular Podcasts</h2>
+
+        </div>
+
+
+        <div class="made-grid">
+
+          <div class="made-card">
+
+            <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?q=80&w=1200&auto=format&fit=crop">
+
+            <h4>Tech Talks</h4>
+
+            <p>Technology Podcast</p>
+
+          </div>
+
+
+          <div class="made-card">
+
+            <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1200&auto=format&fit=crop">
+
+            <h4>Late Night Talks</h4>
+
+            <p>Entertainment Podcast</p>
+
+          </div>
+
+
+          <div class="made-card">
+
+            <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1200&auto=format&fit=crop">
+
+            <h4>Mindset Daily</h4>
+
+            <p>Self Growth Podcast</p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ARTISTS -->
+
+      <section>
+
+        <div class="section-title">
+
+          <h2>Popular Artists</h2>
+
+        </div>
+
+
+        <div class="made-grid">
+
+          <div class="made-card">
+
+            <img src="https://i.scdn.co/image/ab6761610000e5eb4293385d324db8558179afd9">
+
+            <h4>Arijit Singh</h4>
+
+            <p>Bollywood • Romantic</p>
+
+          </div>
+
+
+          <div class="made-card">
+
+            <img src="https://i.scdn.co/image/ab6761610000e5eb8ae7f2aaa9817a704a87ea36">
+
+            <h4>Shubh</h4>
+
+            <p>Punjabi • Hip Hop</p>
+
+          </div>
+
+
+          <div class="made-card">
+
+            <img src="https://i.scdn.co/image/ab6761610000e5eb54e3f0d10f0f7b3b6c9d4d1d">
+
+            <h4>The Weeknd</h4>
+
+            <p>Pop • Synthwave</p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+
+<!-- PLAYER -->
+
+<div class="player">
+
+  <div class="song-info">
+
+    <img id="cover">
+
+    <div>
+
+      <h3 id="title"></h3>
+
+      <p id="artist"></p>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="controls">
+
+    <button id="prev">
+      ⏮
+    </button>
+
+    <button id="play">
+      ▶
+    </button>
+
+    <button id="next">
+      ⏭
+    </button>
+
+  </div>
+
+
+
+  <div class="progress-area">
+
+    <span id="currentTime">
+      0:00
+    </span>
+
+    <input type="range"
+    id="progress">
+
+    <span id="duration">
+      0:00
+    </span>
+
+  </div>
+
+
+
+  <div class="volume-area">
+
+    🔊
+
+    <input
+    type="range"
+    id="volume"
+    min="0"
+    max="1"
+    step="0.1"
+    value="1">
+
+  </div>
+
+</div>
+
+
+
+<audio id="audio"></audio>
+
+<script src="app.js"></script>
+
+</body>
+</html>

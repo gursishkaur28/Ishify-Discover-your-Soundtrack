@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Ishify Profile</title>
+
+<link rel="stylesheet"
+href="profile.css">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="profile-container">
+
+
+
+  <!-- LEFT PROFILE -->
+
+  <div class="profile-left">
+
+    <img
+    class="profile-pic"
+    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop">
+
+
+    <h1 id="userName">
+      Gursish Kaur
+    </h1>
+
+
+    <p id="userEmail">
+      gursish@gmail.com
+    </p>
+
+    <div class="profile-actions">
+
+  <button id="editProfileBtn">
+
+    ✏ Edit Profile
+
+  </button>
+
+
+  <button id="changePhotoBtn">
+
+    🖼 Change Photo
+
+  </button>
+
+
+  <button id="logoutBtn">
+
+    🚪 Logout
+
+  </button>
+
+</div>
+
+
+    <div class="birthday-card">
+
+      🎂 Birthday:
+      12 October 2009
+
+    </div>
+
+
+
+    <!-- QUOTE -->
+
+    <div class="quote-card">
+
+      <h3>
+        🎵 Music Quote
+      </h3>
+
+      <p id="quoteText">
+
+      </p>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- RIGHT SIDE -->
+
+  <div class="profile-right">
+
+    <h1 class="main-heading">
+
+      Your Premium Plans ✨
+
+    </h1>
+
+
+
+    <!-- PREMIUM CARDS -->
+
+    <div class="premium-grid">
+
+      <!-- STUDENT -->
+
+      <div class="premium-card">
+
+        <h2>Student Plan</h2>
+
+        <h1>₹59/month</h1>
+
+        <p>
+
+          ✔ Ad-free music<br>
+          ✔ Offline listening<br>
+          ✔ Student discount<br>
+          ✔ Unlimited skips
+
+        </p>
+
+        <button>
+
+          Upgrade Now
+
+        </button>
+
+      </div>
+
+
+
+      <!-- INDIVIDUAL -->
+
+      <div class="premium-card">
+
+        <h2>Individual</h2>
+
+        <h1>₹119/month</h1>
+
+        <p>
+
+          ✔ Premium sound quality<br>
+          ✔ Unlimited streaming<br>
+          ✔ Offline playback<br>
+          ✔ No ads
+
+        </p>
+
+        <button>
+
+          Get Premium
+
+        </button>
+
+      </div>
+
+
+
+      <!-- FAMILY -->
+
+      <div class="premium-card">
+
+        <h2>Family Pack</h2>
+
+        <h1>₹179/month</h1>
+
+        <p>
+
+          ✔ 6 Premium Accounts<br>
+          ✔ Family mix playlist<br>
+          ✔ Child protection mode<br>
+          ✔ Shared library
+
+        </p>
+
+        <button>
+
+          Buy Family Pack
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- LISTENING STATS -->
+
+    <div class="stats-section">
+
+      <div class="stat-box">
+
+        <h2>124h</h2>
+
+        <p>Music Played</p>
+
+      </div>
+
+
+      <div class="stat-box">
+
+        <h2>89</h2>
+
+        <p>Liked Songs</p>
+
+      </div>
+
+
+      <div class="stat-box">
+
+        <h2>12</h2>
+
+        <p>Playlists</p>
+
+      </div>
+
+
+      <div class="stat-box">
+
+        <h2>Arijit</h2>
+
+        <p>Top Artist</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+<!-- EDIT PROFILE MODAL -->
+
+<div class="edit-modal"
+id="editModal">
+
+  <div class="edit-box">
+
+    <h2>Edit Profile</h2>
+
+
+    <input
+    type="text"
+    id="newName"
+    placeholder="Enter new name">
+
+
+    <input
+    type="email"
+    id="newEmail"
+    placeholder="Enter new email">
+
+
+    <input
+    type="date"
+    id="newBirthday">
+
+
+    <button id="saveProfileBtn">
+
+      Save Changes
+
+    </button>
+
+  </div>
+
+</div>
+
+
+
+<script src="profile.js"></script>
+
+</body>
+</html>
