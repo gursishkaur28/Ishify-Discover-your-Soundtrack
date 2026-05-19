@@ -100,15 +100,7 @@ Affordable music subscription specially designed for students.
 - Download Feature
 
 ---
-#📂 Project Structure
-Ishify/
-│
-├── index.html
-├── style.css
-├── app.js
-├── profile.html
-│
-└── images/
+
 
 
 
@@ -137,6 +129,16 @@ CSS3
 JavaScript
 Font Awesome
 Deezer API
+
+#📂 Project Structure
+Ishify/
+│
+├── index.html
+├── style.css
+├── app.js
+├── profile.html
+│
+└── images/
 
 💜 Thank You
 
