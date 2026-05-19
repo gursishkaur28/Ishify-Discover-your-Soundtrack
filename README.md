@@ -100,19 +100,7 @@ Affordable music subscription specially designed for students.
 - Download Feature
 
 ---
-
-# 🛠️ Tech Stack
-
-```bash
-HTML5
-CSS3
-JavaScript
-Font Awesome
-Deezer API
-
-
-
-<b>#📂 Project Structure</b>
+#📂 Project Structure
 Ishify/
 │
 ├── index.html
@@ -139,6 +127,21 @@ CSE Student
 ✅ Responsive Design
 ✅ GitHub Ready
 
+
+
+# 🛠️ Tech Stack
+
+```bash
+HTML5
+CSS3
+JavaScript
+Font Awesome
+Deezer API
+
 💜 Thank You
 
 Made with passion, creativity and lots of JavaScript ⚡
+
+
+
+
