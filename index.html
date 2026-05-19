@@ -5,406 +5,473 @@
 
   <meta charset="UTF-8">
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+  <meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+  >
 
   <title>Ishify</title>
 
   <link rel="stylesheet" href="style.css">
 
-  <link rel="preconnect"
-        href="https://fonts.googleapis.com">
+  <!-- ICONS -->
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
 
 </head>
 
 <body>
 
-<div class="container">
+<div class="app">
 
   <!-- SIDEBAR -->
 
-  <aside class="sidebar">
+  <div class="sidebar">
 
-    <h1 class="logo">Ishify</h1>
+    <div class="logo-section">
 
-    <nav>
-
-      <ul>
-
-        <li class="active" id="homeBtn">
-          🏠 Home
-        </li>
-
-        <li id="searchBtn">
-          🔍 Search
-        </li>
-
-        <li id="recentBtn">
-          🕓 Recently Played
-        </li>
-
-        <li id="libraryBtn">
-          📚 Your Library
-        </li>
-
-        <li id="likedBtn">
-          ❤️ Liked Songs
-        </li>
-
-        <li id="artistBtn">
-          🎤 Artists
-        </li>
-
-        <li id="profileBtn">
-          👤 Profile
-        </li>
-
-      </ul>
-
-    </nav>
-
-
-
-    <!-- PLAYLISTS -->
-
-    <div class="playlist-section">
-
-      <h3>Your Playlists</h3>
-
-      <div class="playlist-card">
-        Chill Vibes
-      </div>
-
-      <div class="playlist-card">
-        Night Drive
-      </div>
-
-      <div class="playlist-card">
-        Romantic Mood
-      </div>
+      <h1 class="logo">
+        ISHIFY
+      </h1>
 
     </div>
 
-  </aside>
+    <ul class="sidebar-menu">
 
+      <li class="active" id="homeBtn">
 
+        <i class="fa-solid fa-house"></i>
 
-  <!-- MAIN -->
+        <span>Home</span>
 
-  <main class="main-content">
+      </li>
 
-    <div class="topbar">
+      <li id="searchBtn">
 
+        <i class="fa-solid fa-magnifying-glass"></i>
 
+        <span>Search</span>
 
-  <!-- EMPTY LEFT -->
+      </li>
 
-  <div></div>
+      <li id="likedBtn">
 
+        <i class="fa-solid fa-heart"></i>
 
+        <span>Liked Songs</span>
 
-  <!-- SEARCH -->
+      </li>
 
-  <div class="search-wrapper">
+      <li id="artistBtn">
 
-    <input
-    type="text"
-    id="searchInput"
-    placeholder="Search any song or artist...">
+        <i class="fa-solid fa-microphone"></i>
+
+        <span>Artists</span>
+
+      </li>
+      <li id="recentBtn">
+
+        <i class="fa-solid fa-headphones"></i>
+
+        <span>Recently Played</span>
+
+      </li>
+
+      <li id="profileBtn">
+
+        <div class="profile-circle">
+          G
+        </div>
+
+        <span>Profile</span>
+
+      </li>
+      <li id="themeBtn">
+
+         <div class="theme-circle">
+
+         <i class="fa-solid fa-moon"></i>
+
+        </div>
+
+  <span>
+    Theme
+  </span>
+
+</li>
+
+    </ul>
 
   </div>
 
+  <!-- MAIN CONTENT -->
 
+  <div class="main-content">
 
-  <!-- RIGHT -->
+    <!-- TOPBAR -->
 
-  <div class="topbar-right">
+    <div class="top-bar">
 
-    <img
-    id="profileTopbar"
-    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop">
+      <div class="search-box">
 
+        <i class="fa-solid fa-magnifying-glass"></i>
 
-    <button id="themeToggle">
-      🌙
-    </button>
+        <input
+        type="text"
+        id="searchInput"
+        placeholder="Search songs, artists..."
+        >
 
-  </div>
+      </div>
 
-</div>
+      <!-- RELATED SEARCHES -->
 
+      <div class="related-searches">
 
+        <button>
+          Arijit Singh
+        </button>
+
+        <button>
+          Karan Aujla
+        </button>
+
+        <button>
+          Punjabi
+        </button>
+
+        <button>
+          Trending
+        </button>
+
+        <button>
+          Bollywood
+        </button>
+
+      </div>
+
+    </div>
 
     <!-- HOME PAGE -->
 
     <div id="homePage">
 
-      <h1 class="heading">
-        Discover Music 🎧
-      </h1>
-
-
-    <div class="hero-banner">
-
-        <div>
-
-            <h1>
-                Feel The Music 🎧
-            </h1>
-
-            <p>
-            Discover trending tracks,
-            premium playlists &
-            your daily vibe.
-            </p>
-
-            <button>
-                Explore Now
-            </button>
-
-        </div>
-
-    </div>
       <!-- GENRES -->
 
-      <div class="genre-grid">
+      <div class="genre-section">
 
-        <div class="genre-card"
-        data-genre="pop">
-          Pop
-        </div>
+        <h2>
+          Browse Categories
+        </h2>
 
-        <div class="genre-card"
-        data-genre="dance">
-          Dance
-        </div>
+        <div class="genre-buttons">
 
-        <div class="genre-card"
-        data-genre="lofi">
-          Lofi
-        </div>
+          <button
+          class="genre-btn"
+          data-query="trending"
+          >
+          Trending
+          </button>
 
-        <div class="genre-card"
-        data-genre="hiphop">
-          Hip Hop
-        </div>
-
-        <div class="genre-card"
-        data-genre="punjabi">
+          <button
+          class="genre-btn"
+          data-query="punjabi"
+          >
           Punjabi
-        </div>
+          </button>
 
-        <div class="genre-card"
-        data-genre="romantic">
-          Romantic
+          <button
+          class="genre-btn"
+          data-query="pop"
+          >
+          Pop
+          </button>
+
+          <button
+          class="genre-btn"
+          data-query="hip hop"
+          >
+          Hip Hop
+          </button>
+
+          <button
+          class="genre-btn"
+          data-query="bollywood"
+          >
+          Bollywood
+          </button>
+
         </div>
 
       </div>
 
+      <!-- SONG GRID -->
 
+      <div
+      id="songGrid"
+      class="song-grid"
+      >
 
-      <!-- SONGS -->
-
-      <section id="trendingSection">
-
-        <div class="section-title">
-
-        <h2>Trending Songs</h2>
-
-        </div>
-
-        <div class="song-grid"
-        id="songGrid">
-
-        </div>
-
-      </section>
-
-
-
-      <!-- PODCASTS -->
-
-      <section>
-
-        <div class="section-title">
-
-          <h2>Popular Podcasts</h2>
-
-        </div>
-
-
-        <div class="made-grid">
-
-          <div class="made-card">
-
-            <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?q=80&w=1200&auto=format&fit=crop">
-
-            <h4>Tech Talks</h4>
-
-            <p>Technology Podcast</p>
-
-          </div>
-
-
-          <div class="made-card">
-
-            <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1200&auto=format&fit=crop">
-
-            <h4>Late Night Talks</h4>
-
-            <p>Entertainment Podcast</p>
-
-          </div>
-
-
-          <div class="made-card">
-
-            <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1200&auto=format&fit=crop">
-
-            <h4>Mindset Daily</h4>
-
-            <p>Self Growth Podcast</p>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-
-      <!-- ARTISTS -->
-
-      <section>
-
-        <div class="section-title">
-
-          <h2>Popular Artists</h2>
-
-        </div>
-
-
-        <div class="made-grid">
-
-          <div class="made-card">
-
-            <img src="https://i.scdn.co/image/ab6761610000e5eb4293385d324db8558179afd9">
-
-            <h4>Arijit Singh</h4>
-
-            <p>Bollywood • Romantic</p>
-
-          </div>
-
-
-          <div class="made-card">
-
-            <img src="https://i.scdn.co/image/ab6761610000e5eb8ae7f2aaa9817a704a87ea36">
-
-            <h4>Shubh</h4>
-
-            <p>Punjabi • Hip Hop</p>
-
-          </div>
-
-
-          <div class="made-card">
-
-            <img src="https://i.scdn.co/image/ab6761610000e5eb54e3f0d10f0f7b3b6c9d4d1d">
-
-            <h4>The Weeknd</h4>
-
-            <p>Pop • Synthwave</p>
-
-          </div>
-
-        </div>
-
-      </section>
+      </div>
 
     </div>
 
-  </main>
+    <!-- ARTIST PAGE -->
+
+    <div
+    id="artistPage"
+    class="artist-page"
+    >
+
+      <div class="page-header">
+
+        <h1>
+          Popular Artists
+        </h1>
+
+        <p>
+          Explore your favorite artists
+        </p>
+
+      </div>
+
+      <div class="artist-grid">
+
+        <!-- ARTIST CARD -->
+
+        <div class="artist-card">
+
+          <img
+          src="https://i.scdn.co/image/ab6761610000e5ebfc043bea91ac91c222d235c9"
+          >
+
+          <h3>
+            Arijit Singh
+          </h3>
+
+        </div>
+
+        <div class="artist-card">
+
+          <img
+          src="https://i.scdn.co/image/ab6761610000e5eb2f8f5f3e89e3297d482ca392"
+          >
+
+          <h3>
+            Neha Kakkar
+          </h3>
+
+        </div>
+
+        <div class="artist-card">
+
+          <img
+          src="https://i.scdn.co/image/ab6761610000e5eb7e2b4dbb6c42fbaa2af9c8eb"
+          >
+
+          <h3>
+            Karan Aujla
+          </h3>
+
+        </div>
+
+        <div class="artist-card">
+
+          <img
+          src="https://i.scdn.co/image/ab6761610000e5eb13d8d6f7f9b3b39c8c3f9d2"
+          >
+
+          <h3>
+            Shubh
+          </h3>
+
+        </div>
+
+        <div class="artist-card">
+
+          <img
+          src="https://i.scdn.co/image/ab6761610000e5eb6f0da318cc031ee332ed9f2e"
+          >
+
+          <h3>
+            Sidhu Moosewala
+          </h3>
+
+        </div>
+
+        <div class="artist-card">
+
+          <img
+          src="https://i.scdn.co/image/ab6761610000e5eb9b0f43e2d3b2eb6f3abde3f5"
+          >
+
+          <h3>
+            AP Dhillon
+          </h3>
+
+        </div>
+
+        <div class="artist-card">
+
+          <img
+          src="https://i.scdn.co/image/ab6761610000e5eb61c6f3d2cb90e1c13c4c327f"
+          >
+
+          <h3>
+            Diljit Dosanjh
+          </h3>
+
+        </div>
+
+        <div class="artist-card">
+
+          <img
+          src="https://i.scdn.co/image/ab6761610000e5eb9dcafd3e0e3ff9f2e0dbffa2"
+          >
+
+          <h3>
+            Yo Yo Honey Singh
+          </h3>
+
+        </div>
+
+        <div class="artist-card">
+
+          <img
+          src="https://i.scdn.co/image/ab6761610000e5ebf24df52c4f1c8fd5e7ed661f"
+          >
+
+          <h3>
+            KK
+          </h3>
+
+        </div>
+
+        <div class="artist-card">
+
+          <img
+          src="https://i.scdn.co/image/ab6761610000e5ebbc7db8f5a2d73d4b6d2a4449"
+          >
+
+          <h3>
+            Atif Aslam
+          </h3>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
 
 </div>
 
+<!-- MUSIC PLAYER -->
 
+<div class="music-player">
 
-<!-- PLAYER -->
+  <!-- LEFT -->
 
-<div class="player">
+  <div class="player-left">
 
-  <div class="song-info">
-
-    <img id="cover">
+    <img
+    id="cover"
+    src="https://via.placeholder.com/60"
+    >
 
     <div>
 
-      <h3 id="title"></h3>
+      <h3 id="title">
+        No Song Playing
+      </h3>
 
-      <p id="artist"></p>
+      <p id="artist">
+        Artist
+      </p>
 
     </div>
 
   </div>
 
+  <!-- CENTER -->
 
+  <div class="player-center">
 
-  <div class="controls">
+    <div class="controls">
 
-    <button id="prev">
-      ⏮
-    </button>
+      <button id="prev">
 
-    <button id="play">
-      ▶
-    </button>
+        <i class="fa-solid fa-backward"></i>
 
-    <button id="next">
-      ⏭
-    </button>
+      </button>
 
-  </div>
+      <button id="play">
 
+        <i class="fa-solid fa-play"></i>
 
+      </button>
 
-  <div class="progress-area">
+      <button id="next">
 
-    <span id="currentTime">
-      0:00
-    </span>
+        <i class="fa-solid fa-forward"></i>
 
-    <input type="range"
-    id="progress">
+      </button>
 
-    <span id="duration">
-      0:00
-    </span>
-
-  </div>
-
-
-
-  <div class="volume-area">
-
-    🔊
+    </div>
 
     <input
     type="range"
-    id="volume"
-    min="0"
-    max="1"
-    step="0.1"
-    value="1">
+    id="progress"
+    value="0"
+    >
+
+  </div>
+
+  <!-- RIGHT -->
+
+  <div class="player-right">
+
+    <select id="speed">
+
+      <option value="0.5">
+        0.5x
+      </option>
+
+      <option value="1" selected>
+        1x
+      </option>
+
+      <option value="1.5">
+        1.5x
+      </option>
+
+      <option value="2">
+        2x
+      </option>
+
+    </select>
+
+    <div class="volume-box">
+
+      <i class="fa-solid fa-volume-high"></i>
+
+      <input
+      type="range"
+      id="volume"
+      min="0"
+      max="100"
+      value="100"
+      >
+
+    </div>
 
   </div>
 
 </div>
-
-
 
 <audio id="audio"></audio>
 

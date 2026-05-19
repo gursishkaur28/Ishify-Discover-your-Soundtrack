@@ -1,637 +1,550 @@
-let likedSongs = [];
+const songGrid = document.getElementById("songGrid");
+const audio = document.getElementById("audio");
 
-let recentSongs = [];
+const playBtn = document.getElementById("play");
+const nextBtn = document.getElementById("next");
+const prevBtn = document.getElementById("prev");
 
-let queueSongs = [];
+const title = document.getElementById("title");
+const artist = document.getElementById("artist");
+const cover = document.getElementById("cover");
 
+const progress = document.getElementById("progress");
+const volume = document.getElementById("volume");
+const speed = document.getElementById("speed");
 
+const searchInput = document.getElementById("searchInput");
 
-const songGrid =
-document.getElementById("songGrid");
+const homeBtn = document.getElementById("homeBtn");
+const searchBtn = document.getElementById("searchBtn");
+const likedBtn = document.getElementById("likedBtn");
+const artistBtn = document.getElementById("artistBtn");
+const profileBtn = document.getElementById("profileBtn");
+const themeBtn = document.getElementById("themeBtn");
 
-const audio =
-document.getElementById("audio");
-
-const playBtn =
-document.getElementById("play");
-
-const nextBtn =
-document.getElementById("next");
-
-const prevBtn =
-document.getElementById("prev");
-
-const title =
-document.getElementById("title");
-
-const artist =
-document.getElementById("artist");
-
-const cover =
-document.getElementById("cover");
-
-const progress =
-document.getElementById("progress");
-
-const volume =
-document.getElementById("volume");
-
-const searchInput =
-document.getElementById("searchInput");
-
-
+const homePage = document.getElementById("homePage");
+const artistPage = document.getElementById("artistPage");
 
 let songs = [];
+let likedSongs = [];
 
 let currentSong = 0;
-
 let isPlaying = false;
 
+/* ARTISTS */
 
+const artists = [
 
-/* API FETCH */
+{
+name:"Arijit Singh",
+image:"images/arijit.jpg",
+query:"arijit singh"
+},
 
-/* API FETCH */
+{
+name:"Neha Kakkar",
+image:"images/neha.jpg",
+query:"neha kakkar"
+},
 
-async function fetchSongs(query = "top"){
+{
+name:"Diljit Dosanjh",
+image:"images/diljit.jpg",
+query:"diljit dosanjh"
+},
 
-  try{
+{
+name:"Karan Aujla",
+image:"images/karan.jpg",
+query:"karan aujla"
+},
 
-    songGrid.innerHTML =
+{
+name:"Shubh",
+image:"images/shubh.jpg",
+query:"shubh"
+},
 
-    `<h2 class="loading">
-      Loading songs... 🎧
-    </h2>`;
+{
+name:"Sidhu Moosewala",
+image:"images/sidhu.jpg",
+query:"sidhu moosewala"
+}
 
+];
+/* FETCH SONGS */
 
-    const response = await fetch(
+async function fetchSongs(query = "punjabi") {
 
-      `https://deezerdevs-deezer.p.rapidapi.com/search?q=${query}`,
+songGrid.innerHTML = `
+<h2 class="loading">
+Loading Songs 🎵
+</h2>
+`;
 
-      {
+try {
 
-        method:"GET",
+const response = await fetch(
+`https://striveschool-api.herokuapp.com/api/deezer/search?q=${query}`
+);
 
-        headers:{
+const data = await response.json();
 
-          "X-RapidAPI-Key":
-          "1ce54a44e2mshdf802179ea2fb48p117228jsnce26e2c70d3b",
+songs = data.data;
 
-          "X-RapidAPI-Host":
-          "deezerdevs-deezer.p.rapidapi.com"
-
-        }
-
-      }
-
-    );
-
-
-
-    if(!response.ok){
-
-      throw new Error(
-        "API Request Failed"
-      );
-
-    }
-
-
-
-    const data =
-    await response.json();
-
-
-
-    if(!data.data ||
-       data.data.length === 0){
-
-      songGrid.innerHTML =
-
-      `<h2 class="loading">
-        No songs found 😭
-      </h2>`;
-
-      return;
-
-    }
-
-
-
-    songs = data.data;
-
-    renderSongs(songs);
-
-  }
-
-
-
-  catch(error){
-
-    console.log(error);
-
-
-
-    songGrid.innerHTML =
-
-    `<h2 class="loading">
-      API Failed 😭
-      <br><br>
-      Try Again Later
-    </h2>`;
-
-  }
+renderSongs();
 
 }
 
+catch(error){
 
+console.log(error);
+
+songGrid.innerHTML = `
+<h2 class="loading">
+API Failed 😭
+</h2>
+`;
+
+}
+
+}
 
 /* RENDER SONGS */
 
-function renderSongs(songArray){
+function renderSongs(){
 
-  songGrid.innerHTML = "";
+songGrid.innerHTML = "";
 
-  songArray.forEach((song,index)=>{
+songs.forEach((song,index)=>{
 
-    const card =
-    document.createElement("div");
+const card = document.createElement("div");
 
-    card.classList.add("song-card");
+card.classList.add("song-card");
 
+card.innerHTML = `
 
+<img src="${song.album.cover_medium}">
 
-    card.innerHTML = `
+<h3>${song.title}</h3>
 
-      <img src="${song.album.cover_medium}">
+<p>${song.artist.name}</p>
 
-      <h3>${song.title}</h3>
+<button class="like-btn">
 
-      <p>${song.artist.name}</p>
+  <i class="fa-solid fa-heart"></i>
 
-    `;
+</button>
 
+`;
 
+card.addEventListener("click",()=>{
 
-    /* PLAY SONG */
+loadSong(index);
 
-    card.addEventListener("click",()=>{
+});
 
-      loadSong(index);
+const likeBtn =
+card.querySelector(".like-btn");
 
-      playSong();
+likeBtn.addEventListener("click",(e)=>{
 
-    });
+e.stopPropagation();
 
+likedSongs.push(song);
 
+alert("Music Liked ❤️");
 
-    /* LIKE SONG */
+});
 
-    card.addEventListener("dblclick",()=>{
+songGrid.appendChild(card);
 
-      likedSongs.push(song);
-
-      alert(
-        song.title +
-        " added to liked songs ❤️"
-      );
-
-    });
-
-
-
-    /* OPEN SONG PAGE */
-
-    card.addEventListener("contextmenu",(e)=>{
-
-      e.preventDefault();
-
-      localStorage.setItem(
-        "selectedSong",
-        JSON.stringify(song)
-      );
-
-      window.location.href =
-      "song.html";
-
-    });
-
-
-
-    songGrid.appendChild(card);
-
-  });
+});
 
 }
-
-
 
 /* LOAD SONG */
 
 function loadSong(index){
 
-  const song = songs[index];
+const song = songs[index];
 
-  audio.src = song.preview;
+if(!song.preview){
 
-  title.textContent = song.title;
+alert("Preview unavailable 😭");
 
-  artist.textContent = song.artist.name;
-
-  cover.src = song.album.cover_medium;
-
-
-
-  /* RECENTLY PLAYED */
-
-  recentSongs.unshift(song);
-
-  if(recentSongs.length > 10){
-
-    recentSongs.pop();
-
-  }
-
-
-
-  currentSong = index;
+return;
 
 }
 
+currentSong = index;
 
+audio.src = song.preview;
+
+title.innerText = song.title;
+artist.innerText = song.artist.name;
+cover.src = song.album.cover_medium;
+
+playSong();
+
+}
 
 /* PLAY */
 
 function playSong(){
 
-  audio.play();
+audio.play();
 
-  isPlaying = true;
+isPlaying = true;
 
-  playBtn.textContent = "⏸";
+playBtn.innerHTML = "⏸";
 
 }
-
-
 
 /* PAUSE */
 
 function pauseSong(){
 
-  audio.pause();
+audio.pause();
 
-  isPlaying = false;
+isPlaying = false;
 
-  playBtn.textContent = "▶";
+playBtn.innerHTML = "▶";
 
 }
-
-
 
 /* PLAY BUTTON */
 
 playBtn.addEventListener("click",()=>{
 
-  if(isPlaying){
+if(!audio.src){
 
-    pauseSong();
+alert("Select Song First 🎵");
 
-  }
+return;
 
-  else{
+}
 
-    playSong();
+if(isPlaying){
 
-  }
+pauseSong();
+
+}
+
+else{
+
+playSong();
+
+}
 
 });
-
-
 
 /* NEXT */
 
 nextBtn.addEventListener("click",()=>{
 
-  currentSong++;
+currentSong++;
 
-  if(currentSong > songs.length - 1){
+if(currentSong >= songs.length){
 
-    currentSong = 0;
+currentSong = 0;
 
-  }
+}
 
-  loadSong(currentSong);
-
-  playSong();
+loadSong(currentSong);
 
 });
 
-
-
-/* PREV */
+/* PREVIOUS */
 
 prevBtn.addEventListener("click",()=>{
 
-  currentSong--;
+currentSong--;
 
-  if(currentSong < 0){
+if(currentSong < 0){
 
-    currentSong = songs.length - 1;
+currentSong = songs.length - 1;
 
-  }
+}
 
-  loadSong(currentSong);
-
-  playSong();
+loadSong(currentSong);
 
 });
-
-
-
-/* SEARCH */
-
-searchInput.addEventListener("keyup",(e)=>{
-
-  const query = e.target.value;
-
-  if(query.length > 0){
-
-    fetchSongs(query);
-
-  }
-
-});
-
-
-
-/* GENRE BUTTONS */
-
-const genreCards =
-document.querySelectorAll(".genre-card");
-
-genreCards.forEach(card => {
-
-  card.addEventListener("click",()=>{
-
-    const genre =
-    card.dataset.genre;
-
-
-
-    if(genre === "punjabi"){
-
-      fetchSongs(
-        "punjabi hits"
-      );
-
-    }
-
-
-
-    else if(genre === "romantic"){
-
-      fetchSongs(
-        "romantic songs"
-      );
-
-    }
-
-
-
-    else if(genre === "hiphop"){
-
-      fetchSongs(
-        "hip hop"
-      );
-
-    }
-
-
-
-    else if(genre === "lofi"){
-
-      fetchSongs(
-        "lofi songs"
-      );
-
-    }
-
-
-
-    else{
-
-      fetchSongs(genre);
-
-    }
-
-  });
-
-});
-
-
 
 /* PROGRESS */
 
 audio.addEventListener("timeupdate",()=>{
 
-  progress.max = audio.duration;
-
-  progress.value = audio.currentTime;
+progress.max = audio.duration;
+progress.value = audio.currentTime;
 
 });
-
-
 
 progress.addEventListener("input",()=>{
 
-  audio.currentTime = progress.value;
+audio.currentTime = progress.value;
 
 });
 
-/* VOLUME CONTROL */
+/* VOLUME */
 
 volume.addEventListener("input",()=>{
 
-  audio.volume = volume.value;
+audio.volume = volume.value / 100;
 
 });
 
-/* AUTO NEXT */
+/* SPEED */
 
-audio.addEventListener("ended",()=>{
+speed.addEventListener("change",()=>{
 
-  currentSong++;
-
-  if(currentSong > songs.length - 1){
-
-    currentSong = 0;
-
-  }
-
-  loadSong(currentSong);
-
-  playSong();
+audio.playbackRate = speed.value;
 
 });
 
+/* SEARCH */
 
+searchInput.addEventListener("input",(e)=>{
 
-/* DARK MODE */
+if(e.target.value.length > 0){
 
-const themeToggle =
-document.getElementById("themeToggle");
-
-themeToggle.addEventListener("click",()=>{
-
-  document.body.classList.toggle("dark");
-
-});
-
-
-
-/* SIDEBAR BUTTONS */
-
-const menuItems =
-document.querySelectorAll(".sidebar li");
-
-menuItems.forEach(item => {
-
-  item.addEventListener("click",()=>{
-
-    menuItems.forEach(nav => {
-
-      nav.classList.remove("active");
-
-    });
-
-    item.classList.add("active");
-
-
-
-    const text =
-    item.textContent;
-
-
-
-    if(text.includes("Search")){
-
-        searchInput.focus();
-
-
-
-        document
-        .getElementById("trendingSection")
-        .scrollIntoView({
-
-        behavior:"smooth"
-
-    });
+fetchSongs(e.target.value);
 
 }
 
+});
 
+/* GENRE BUTTONS */
 
-    if(text.includes("Liked")){
+const genreBtns =
+document.querySelectorAll(".genre-btn");
 
-      renderSongs(likedSongs);
+genreBtns.forEach(btn=>{
 
-    }
+btn.addEventListener("click",()=>{
 
-
-
-    if(text.includes("Recently")){
-
-      renderSongs(recentSongs);
-
-    }
-
-
-
-    if(text.includes("Home")){
-
-      fetchSongs();
-
-    }
-
-
-
-    if(text.includes("Artists")){
-
-      fetchSongs("artist");
-
-    }
-
-
-
-    if(text.includes("Library")){
-
-      alert(
-       "Your Library Opened 📚"
-      );
-
-    }
-
-
-
-    if(text.includes("Profile")){
-
-      window.location.href =
-      "profile.html";
-
-    }
-
-  });
+fetchSongs(btn.dataset.query);
 
 });
 
+});
 
+/* HOME */
 
-/* PLAYLIST INTERACTION */
+homeBtn.addEventListener("click",()=>{
 
-const playlists =
-document.querySelectorAll(".playlist-card");
+artistPage.style.display = "none";
+homePage.style.display = "block";
 
-playlists.forEach(playlist => {
-
-  playlist.addEventListener("click",()=>{
-
-    playlist.style.background =
-    "#4D0E13";
-
-    playlist.style.color =
-    "white";
-
-
-
-    setTimeout(()=>{
-
-      playlist.style.background =
-      "#F5EEE8";
-
-      playlist.style.color =
-      "#4D0E13";
-
-    },800);
-
-  });
+fetchSongs("trending punjabi");
 
 });
 
+/* SEARCH */
 
+searchBtn.addEventListener("click",()=>{
 
-/* INITIAL FETCH */
+searchInput.focus();
+
+});
+
+/* LIKED */
+
+likedBtn.addEventListener("click",()=>{
+
+artistPage.style.display = "none";
+homePage.style.display = "block";
+
+if(likedSongs.length === 0){
+
+songGrid.innerHTML = `
+<h2 class="loading">
+No Liked Songs ❤️
+</h2>
+`;
+
+return;
+
+}
+
+songs = likedSongs;
+
+renderSongs();
+
+});
+
+/* PROFILE */
+
+profileBtn.addEventListener(
+"click",
+()=>{
+
+window.location.href =
+"profile.html";
+
+}
+);
+
+/* ARTISTS */
+
+artistBtn.addEventListener("click",()=>{
+
+homePage.style.display = "none";
+artistPage.style.display = "block";
+
+const artistGrid =
+document.querySelector(".artist-grid");
+
+artistGrid.innerHTML = "";
+
+artists.forEach((artistData)=>{
+
+const card =
+document.createElement("div");
+
+card.classList.add("artist-card");
+
+card.innerHTML = `
+
+<img 
+src="${artistData.image}"
+onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'"
+>
+
+<h3>${artistData.name}</h3>
+
+`;
+
+card.addEventListener("click",()=>{
+
+artistPage.style.display = "none";
+homePage.style.display = "block";
+
+fetchSongs(artistData.query);
+
+});
+
+artistGrid.appendChild(card);
+
+});
+
+});
+
+/* RECENTLY PLAYED */
+
+let recentSongs = [];
+
+/* LOAD SONG */
+
+function loadSong(index){
+
+const song = songs[index];
+
+if(!song.preview){
+
+alert("Preview unavailable 😭");
+
+return;
+
+}
+
+currentSong = index;
+
+audio.src = song.preview;
+
+title.innerText = song.title;
+
+artist.innerText = song.artist.name;
+
+cover.src = song.album.cover_medium;
+
+/* ADD TO RECENT */
+
+const exists =
+recentSongs.find(
+(item)=> item.id === song.id
+);
+
+if(!exists){
+
+recentSongs.unshift(song);
+
+}
+
+/* LIMIT */
+
+if(recentSongs.length > 15){
+
+recentSongs.pop();
+
+}
+
+playSong();
+
+}
+
+/* RECENT BUTTON */
+
+const recentBtn =
+document.getElementById("recentBtn");
+
+recentBtn.addEventListener(
+"click",
+()=>{
+
+artistPage.style.display =
+"none";
+
+homePage.style.display =
+"block";
+
+if(recentSongs.length === 0){
+
+songGrid.innerHTML = `
+<h2 class="loading">
+No Recently Played Songs 🎵
+</h2>
+`;
+
+return;
+
+}
+
+songs = recentSongs;
+
+renderSongs();
+
+alert("🕓 Recently Played Loaded");
+
+}
+);
+
+/* DARK MODE */
+
+let darkMode = false;
+
+themeBtn.addEventListener("click",()=>{
+
+darkMode = !darkMode;
+
+document.body.classList.toggle("light");
+
+if(darkMode){
+
+alert("Light Mode On ☀️");
+
+}
+
+else{
+
+alert("Dark Mode On 🌙");
+
+}
+
+});
+
+/* INITIAL */
+
+artistPage.style.display = "none";
 
 fetchSongs();
-/* PROFILE IMAGE */
-
-const profileTopbar =
-document.getElementById("profileTopbar");
-
-
-
-profileTopbar.addEventListener("click",()=>{
-
-  window.location.href =
-  "profile.html";
-
-});
