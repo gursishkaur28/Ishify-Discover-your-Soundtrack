@@ -112,7 +112,7 @@ Deezer API
 
 
 
-📂 Project Structure
+<b>#📂 Project Structure</b>
 Ishify/
 │
 ├── index.html
@@ -121,12 +121,17 @@ Ishify/
 ├── profile.html
 │
 └── images/
-👩‍💻 Developer
+
+
+
+#👩‍💻 Developer
 Gursish Kaur
 Roll No: 2510990204
 Group: 2
 CSE Student
-🌟 Project Status
+
+
+#🌟 Project Status
 
 ✅ Fully Functional
 ✅ Interactive UI
